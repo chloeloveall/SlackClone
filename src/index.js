@@ -25,7 +25,9 @@ class Root extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.isLoading ? (
+      <Spinner />
+    ) : (
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/register" component={Register} />
@@ -35,7 +37,7 @@ class Root extends React.Component {
   }
 } 
 
-const mapStateFromProps = state => ({
+const mapStateToProps = state => ({
   isLoading: state.user.isLoading
 });
 
