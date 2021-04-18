@@ -49,8 +49,8 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <RootWithAuth />
-      </Router>,
-    </Provider>,
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
