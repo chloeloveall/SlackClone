@@ -11,6 +11,7 @@ import { Provider, connect } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from './reducers'
 import { setUser } from './actions';
+import Spinner from './Spinner';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -41,7 +42,7 @@ const mapStateToProps = state => ({
   isLoading: state.user.isLoading
 });
 
-const RootWithAuth = withRouter(connect(mapStateFromProps, { setUser })(Root));
+const RootWithAuth = withRouter(connect(mapStateToProps, { setUser })(Root));
 
 ReactDOM.render(
   <React.StrictMode>
