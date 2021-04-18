@@ -6,6 +6,11 @@ import Login from './components/Auth/Login';
 import firebase from './firebase';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider, connect } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+
+const store = createStore(() => {}, composeWithDevTools());
 
 class Root extends React.Component {
   componentDidMount() {
@@ -31,9 +36,11 @@ const RootWithAuth = withRouter(Root);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <RootWithAuth />
-    </Router>,
+    <Provider store={store}>
+      <Router>
+        <RootWithAuth />
+      </Router>,
+    </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
